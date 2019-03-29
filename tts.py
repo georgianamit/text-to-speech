@@ -13,4 +13,4 @@ def speak(text,language):
     filepath = os.path.join(BASE_DIR, "audios/"+filename)
     aud.save(filepath)
 
-    os.system("mpg321 "+filepath)
+    os.system("mpg321 "+ filepath)

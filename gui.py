@@ -1,0 +1,39 @@
+from tkinter import *
+from tts import speak
+
+root = Tk()
+root.geometry("280x250")
+root.title("Text To Speech")
+
+title = Label(root, text="Text-To-Speech Convertor", height =1, width =20, bg ="blue", fg="white")
+title.grid(row=0,column=1)
+
+label1 =Label(root, text ="Text")
+label1.grid(row =1, column =0, rowspan=2)
+
+txtbx =Entry(root)
+txtbx.grid(row =1, column =1, rowspan=2)
+txtbx.focus_set()
+
+status_label = Label(root, text="")
+status_label.grid(row =3, column=0)
+
+def addF():
+    if (txtbx.get() != ""):
+        try:
+            txt = txtbx.get()
+            speak(txt,"en")
+            status_label.configure(text ="successfully completed")
+        except:
+            status_label.configure(text ="The text is not in proper format.")
+    else:
+        status_label.configure(text ="fill in the text, please.")
+
+
+btn = Button(root, text="speak", command = addF)
+btn.grid(row=4,column=0, columnspan =2)
+
+status_label =Label(root, height =5, width =25, bg ="black", fg ="#00FF00", text ="---", wraplength =150)
+status_label.grid(row =6, column =0, columnspan =2)
+
+root.mainloop()
